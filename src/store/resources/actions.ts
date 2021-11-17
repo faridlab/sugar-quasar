@@ -1,8 +1,9 @@
 import { api } from 'boot/axios'
 import { Cookies } from 'quasar'
+import { ActionContext } from 'vuex'
 
 export async function fetch ({ state, commit, dispatch, getters }, { params, headers = {}, config = {} } = {}) {
-  var token = Cookies.get('authorization_token')
+  const token: string = Cookies.get('authorization_token')
   if (token) {
     headers = { Authorization: `Bearer ${token}`, ...headers }
   }

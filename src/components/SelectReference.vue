@@ -22,8 +22,14 @@
   </q-select>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+// import Vue, { PropType } from 'vue'
+// export default const Component = Vue.extend({
+
+// })
+
+export default defineComponent({
   name: 'SelectReference',
   props: {
     collection: {
@@ -63,20 +69,21 @@ export default {
   },
   computed: {
     value: {
-      get() {
+      get(): number|string {
         return this.modelValue
       },
-      set(value) {
+      set(value: number|string) {
         this.$emit('update:modelValue', value)
       }
     }
   },
   methods: {
-    onFilter (search, update, abort) {
+    onFilter (search: string, update: (arg: () => void) => void) {
       const params = {
         search
       }
-      this.$store.dispatch(`${this.collection}/${this.action}`, { params }).then(response => {
+      this.$store.dispatch(`${this.collection}/${this.action}`, { params })
+      .then(response => {
         const { data } = response
         update(() => {
           this.options = data
@@ -84,5 +91,5 @@ export default {
       })
     }
   }
-}
+})
 </script>
