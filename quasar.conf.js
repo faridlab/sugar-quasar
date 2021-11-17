@@ -7,13 +7,15 @@
 // https://v2.quasar.dev/quasar-cli/quasar-conf-js
 
 /* eslint-env node */
-const ESLintPlugin = require('eslint-webpack-plugin')
-const { configure } = require('quasar/wrappers');
+import ESLintPlugin from 'eslint-webpack-plugin'
+import { configure } from 'quasar/wrappers'
+// const ESLintPlugin = require('eslint-webpack-plugin')
+// const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
   return {
     // https://v2.quasar.dev/quasar-cli/supporting-ts
-    supportTS: false,
+    supportTS: true,
 
     // https://v2.quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
@@ -136,9 +138,9 @@ module.exports = configure(function (/* ctx */) {
       },
 
       manifest: {
-        name: `SKSSK`,
-        short_name: `SKSSK`,
-        description: `SKSSK`,
+        name: 'Sugar Quasar',
+        short_name: 'Sugar Quasar',
+        description: 'Sugar Quasar',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -203,7 +205,7 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'skssk'
+        appId: 'sugar'
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
