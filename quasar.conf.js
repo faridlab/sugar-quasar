@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
@@ -7,10 +8,10 @@
 // https://v2.quasar.dev/quasar-cli/quasar-conf-js
 
 /* eslint-env node */
-import ESLintPlugin from 'eslint-webpack-plugin'
-import { configure } from 'quasar/wrappers'
-// const ESLintPlugin = require('eslint-webpack-plugin')
-// const { configure } = require('quasar/wrappers');
+// import ESLintPlugin from 'eslint-webpack-plugin'
+// import { configure } from 'quasar/wrappers'
+const ESLintPlugin = require('eslint-webpack-plugin')
+const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
   return {
