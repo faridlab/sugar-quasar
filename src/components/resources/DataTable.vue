@@ -187,6 +187,7 @@ export default {
   setup (props) {
 
     const {
+      rows,
       filter,
       loading,
       pagination,
@@ -195,12 +196,13 @@ export default {
     } = useDatatableRepositories(props)
 
     return {
+      rows,
       filter,
       loading,
       pagination,
       pageOptions,
       onRequest,
-      ...useDatatableSelectable()
+      ...useDatatableSelectable({rows})
     }
   },
   data () {
@@ -521,7 +523,7 @@ export default {
   },
   computed: {
     data () {
-      return this.rows.value
+      return this.rows
     },
     pageTitle () {
       if (this.stateForm == 'trash') {
