@@ -1,22 +1,20 @@
 import { useQuasar } from 'quasar'
-import { toRefs, reactive } from 'vue'
-
+import { toRefs, ref } from 'vue'
 export default function useDatatableRepositories(props) {
 
   const $q = useQuasar()
-
-  const { params } = props
-
-  const filter = reactive('')
-  let loading = reactive(false)
-  const pagination = reactive({
+  const { fetch, params } = props
+  const rows = ref([])
+  const filter = ref('')
+  let loading = ref(false)
+  const pagination = ref({
     sortBy: 'id',
     descending: true,
     page: 1,
     rowsPerPage: 10, // limit default set 25
     rowsNumber: 0 // total records
   })
-  const pageOptions = reactive([5, 10, 25, 50, 100])
+  const pageOptions = ref([5, 10, 25, 50, 100])
 
   const onRequest = async ({ filters, pagination }) => {
     const { page, rowsPerPage, sortBy, descending } = pagination
@@ -28,7 +26,7 @@ export default function useDatatableRepositories(props) {
     const parameters = {
       ...params,
       ...filter,
-      search,
+      // search,
       page: page,
       limit: rowsPerPage,
       // [`orderby[${sortBy}]`]: descending ? 'desc' : 'asc'
@@ -40,15 +38,15 @@ export default function useDatatableRepositories(props) {
     }
 
     loading = true
-    this.fetch({ params: parameters }).then((response) => {
+    fetch({ params: parameters }).then((response) => {
       const { data, meta } = response
       pagination.rowsNumber = meta.recordsFiltered
       pagination.page = page
       pagination.rowsPerPage = rowsPerPage
       pagination.sortBy = sortBy
       pagination.descending = descending
-      this.rows.value = data
-      this.loading = false
+      rows.value = data
+      loading = false
     }).catch(error => {
       if (error.response) {
         const { data } = error.response
@@ -61,11 +59,12 @@ export default function useDatatableRepositories(props) {
           persistent: true
         })
       }
-      this.loading = false
+      loading = false
     })
   }
 
   return {
+    rows,
     filter,
     loading,
     pagination,
