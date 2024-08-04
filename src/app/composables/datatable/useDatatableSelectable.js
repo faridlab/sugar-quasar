@@ -1,12 +1,11 @@
 import { useQuasar } from 'quasar'
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-export default function useDatatableSelectable() {
-
+export default function useDatatableSelectable(props) {
+  const { rows } = props
   const $q = useQuasar()
 
   const selected = ref([])
-  const rows = ref([])
   const selectedRow = ref(null)
   const lastIndex = ref(null)
   const tableRef = ref(null)
