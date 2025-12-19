@@ -7,6 +7,7 @@ import {
 } from 'vue-router';
 
 import routes from './routes';
+import { authGuard } from './guards';
 
 export default route(function () {
   const createHistory = process.env.SERVER
@@ -20,6 +21,9 @@ export default route(function () {
     routes,
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
+
+  // Global navigation guard
+  Router.beforeEach(authGuard);
 
   return Router;
 });
