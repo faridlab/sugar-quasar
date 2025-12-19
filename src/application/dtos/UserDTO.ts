@@ -80,3 +80,26 @@ export interface RegisterDTO {
   password: string;
   passwordConfirmation: string;
 }
+
+/**
+ * Create user data
+ */
+export interface CreateUserDTO {
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+  roleIds?: string[];
+}
+
+/**
+ * Update user data
+ */
+export interface UpdateUserDTO {
+  name?: string | undefined;
+  email?: string | undefined;
+  password?: string | undefined;
+  passwordConfirmation?: string | undefined;
+  roleIds?: string[] | undefined;
+  isActive?: boolean | undefined;
+}

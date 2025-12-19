@@ -6,4 +6,6 @@ export type {
   AuthUserDTO,
   LoginCredentialsDTO,
   RegisterDTO,
+  CreateUserDTO,
+  UpdateUserDTO,
 } from './UserDTO';
