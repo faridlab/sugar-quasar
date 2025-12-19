@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(xargs:*)",
+      "Bash(mkdir:*)",
+      "Bash(bun:*)",
+      "Bash(yarn --version)",
+      "Bash(corepack enable:*)",
+      "Bash(yarn set version:*)",
+      "Bash(yarn install)",
+      "Bash(yarn typecheck:*)",
+      "Bash(curl:*)",
+      "Bash(yarn lint:*)",
+      "Bash(yarn build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
