@@ -11,7 +11,7 @@ declare module 'quasar/wrappers' {
   import type { Router, RouteLocationNormalized } from 'vue-router';
   import type { Pinia } from 'pinia';
 
-  interface BootFileParams<TState = unknown> {
+  interface BootFileParams {
     app: App;
     router: Router;
     store: Pinia;
@@ -21,13 +21,9 @@ declare module 'quasar/wrappers' {
     redirect: (url: string) => void;
   }
 
-  type BootCallback<TState = unknown> = (
-    params: BootFileParams<TState>
-  ) => void | Promise<void>;
+  type BootCallback = (params: BootFileParams) => void | Promise<void>;
 
-  export function boot<TState = unknown>(
-    callback: BootCallback<TState>
-  ): BootCallback<TState>;
+  export function boot(callback: BootCallback): BootCallback;
 
   interface RouteMiddlewareParams {
     to: RouteLocationNormalized;
