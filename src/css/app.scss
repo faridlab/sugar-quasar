@@ -1,1 +1,28 @@
-// app global css in SCSS form
+// App Global SCSS
+
+// Quasar variables override
+// https://quasar.dev/style/sass-scss-variables
+
+// Custom Variables
+:root {
+  --app-primary: #1976d2;
+  --app-secondary: #26a69a;
+  --app-accent: #9c27b0;
+  --app-dark: #1d1d1d;
+  --app-positive: #21ba45;
+  --app-negative: #c10015;
+  --app-info: #31ccec;
+  --app-warning: #f2c037;
+}
+
+// Global Styles
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+// Utility classes
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

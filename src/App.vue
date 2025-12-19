@@ -1,10 +1,7 @@
 <template>
   <router-view />
 </template>
-<script>
-import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'App'
-})
+<script setup lang="ts">
+// Main app component - router-view renders the current route
 </script>
